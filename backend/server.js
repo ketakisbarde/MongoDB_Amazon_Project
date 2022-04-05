@@ -9,6 +9,10 @@ require('dotenv').config();
 const app = express();
 const port = process.env.PORT || 5000;
 
+app.use(cors());
+//This allows to parse json
+app.use(express.json());
+
 const uri = process.env.ATLAS_URI;
 mongoose.connect(uri);
 
@@ -17,9 +21,9 @@ connection.once('open', () => {
     console.log("MongoDB database connection extablished successfully!");
 })
 
-app.use(cors());
-//This allows to parse json
-app.use(express.json());
+const router = require('./routes/function.js');
+
+app.use('/functions', router);
 
 //It starts the server and listen on port 5000
 app.listen(port, () => {
