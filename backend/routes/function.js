@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const {request} = require('express');
+// const {request} = require('express');
 let amazonData = require('../models/dataModel.js');
 
 //This is the first end point that handle http get request
