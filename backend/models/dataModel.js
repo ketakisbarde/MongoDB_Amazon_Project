@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 
-const amazonDataSchema = new mongoose.Schema({},{collection:'products'});
+const amazonDataSchema = new mongoose.Schema({},{strict : false});
+
+// console.log(amazonDataSchema);
 
 amazonDataSchema.method("toJson", function() {
     const {__v, _id, ...object} = this.toObject();
@@ -10,5 +12,6 @@ amazonDataSchema.method("toJson", function() {
 });
 
 const amazonData = mongoose.model('products', amazonDataSchema);
+// console.log(amazonData);
 
 module.exports = amazonData;
