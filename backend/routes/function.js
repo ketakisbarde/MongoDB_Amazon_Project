@@ -10,7 +10,7 @@ let amazonData = require('../models/dataModel');
 // This is the first end point that handle http get request
 // router.get()
 router.route('/').get((req, res) => {
-    res.send("CONNECTED TO GET ROUTE");
+    // res.send("CONNECTED TO GET ROUTE");
     //Mongoose method to get list of all data from database 
     amazonData.find().limit(10)
     .then(data => res.json(data))
