@@ -21,9 +21,9 @@ connection.once('open', () => {
     console.log("MongoDB database connection extablished successfully!");
 })
 
-const router = require('./routes/function.js');
+const funcRouter = require('./routes/function');
 
-app.use('/functions', router);
+app.use('/function', funcRouter);
 
 //It starts the server and listen on port 5000
 app.listen(port, () => {
