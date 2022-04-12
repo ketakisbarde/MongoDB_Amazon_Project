@@ -38,24 +38,24 @@ router.route('/search/:description').get((req, res) => {
 })
 
 //This is end point that searches the database based on location of person
-router.route('geoSearch/:longitude/:latitude').get((req, res) => {
+router.route('/geoSearch/:longitude/:latitude').get((req, res) => {
     var long = req.params.longitude;
     var lat = req.params.latitude;
     amazonData.find({
-        geoLoc: {
-            $near: {
+        loc:
+            { 
+            $near: 
+                {
                 $geometry: {
-                    type: "Point",
-                    coordinates: [long, lat]
+                    "type": "Point" ,
+                    "coordinates": [long, lat]
                 },
-                $maxDistance: 500
-            }
-        }
-    })
+                $maxDistance: 100
+            }}})
     .then(data => {
         res.json(data)
     })
-    .catch(err => res.json(400).json('Error: ' +err));
+    .catch(err => {return err.json});
 })
 
 //Exporting the router
